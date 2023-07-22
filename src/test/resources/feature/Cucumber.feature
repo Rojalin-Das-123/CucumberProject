@@ -5,3 +5,4 @@ Feature: My first feature
     And click on submit
     Then he should login
     When the "POST" call is made
+    Then nothing

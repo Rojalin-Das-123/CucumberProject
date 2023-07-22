@@ -25,4 +25,9 @@ public class MySteps {
         System.out.println("login successfully");
 
     }
+
+    @Then("nothing")
+    public void nothing() {
+
+    }
 }
