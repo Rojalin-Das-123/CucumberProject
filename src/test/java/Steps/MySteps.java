@@ -1,10 +1,13 @@
 package Steps;
 
+import api.BaseTest;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class MySteps {
+public class MySteps extends BaseTest {
+
+
 
     @Given("the user should login first")
     public void the_user_should_login_first() {
@@ -29,5 +32,17 @@ public class MySteps {
     @Then("nothing")
     public void nothing() {
 
+        System.out.println("yes");
+
+    }
+
+    @Given("base URL is set to {string}")
+    public void baseURLIsSetTo(String baseUrl) {
+        apiComponent.setBaseUrl(baseUrl);
+    }
+
+    @Given("endPoint is set to {string}")
+    public void endpointIsSetTo(String endPoint) {
+        apiComponent.setEndPoint(endPoint);
     }
 }

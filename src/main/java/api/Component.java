@@ -1,5 +1,8 @@
 package api;
 
+import io.restassured.response.Response;
+
+import java.util.Dictionary;
 import java.util.HashMap;
 
 public class Component {
@@ -7,25 +10,17 @@ public class Component {
     private String endPoint;
     private HashMap<String,String> headers;
     private Object requestBody;
+    private String basicAuthenticationUsername;
+    private String basicAuthenticationPassword;
+    private Response response;
 
 
-    public Component(String baseUrl, String endPoint, HashMap<String, String> headers, Object requestBody) {
-        this.baseUrl = baseUrl;
-        this.endPoint = endPoint;
-        this.headers = headers;
-        this.requestBody = requestBody;
+    public Component() {
     }
 
-    public String getBaseUrl() {
-        return baseUrl;
-    }
 
     public void setBaseUrl(String baseUrl) {
         this.baseUrl = baseUrl;
-    }
-
-    public String getEndPoint() {
-        return endPoint;
     }
 
     public void setEndPoint(String endPoint) {
@@ -48,4 +43,37 @@ public class Component {
         this.requestBody = requestBody;
     }
 
+
+    public String getBaseURL() {
+        return baseUrl;
+    }
+
+    public String getEndpoint() {
+        return endPoint;
+    }
+    public String getBasicAuthenticationUsername() {
+        return this.basicAuthenticationUsername;
+    }
+
+    public String getBasicAuthenticationPassword() {
+        return this.basicAuthenticationPassword;
+    }
+
+    public void setBasicAuthentication(String username, String password) {
+        this.basicAuthenticationUsername = username;
+        this.basicAuthenticationPassword = password;
+    }
+
+    public void setResponse(Response response) {
+        this.response = response;
+    }
+
+
+    public String getEndPoint() {
+        return endPoint;
+    }
+
+    public Response getResponse() {
+        return response;
+    }
 }

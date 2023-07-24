@@ -6,7 +6,8 @@ import io.restassured.specification.RequestSpecification;
 
 public class APIService {
     protected RequestSpecification request;
-    protected Response response;
+    public Response response;
+    private APIHelper apiHelper;
 
     public APIService(RequestSpecification request) {
         this.request = request;
@@ -31,5 +32,19 @@ public class APIService {
         this.response = (Response)this.request.get(component.getEndPoint());
         return response;
 
+    }
+    public Component sendRequest(HTTPMethod httpMethod, Component component, boolean skipSSLCertificationValidation) {
+        switch(httpMethod) {
+            case GET:
+                component.setRequestBody((Object)null);
+            case POST:
+            case PUT:
+        }
+
+        this.apiHelper = new APIHelper();
+        this.response =  this.apiHelper.sendRequest(httpMethod, component, skipSSLCertificationValidation);
+        component.setResponse(this.response);
+        System.out.println("component"+component.toString());
+        return component;
     }
 }

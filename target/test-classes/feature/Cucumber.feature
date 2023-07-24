@@ -1,7 +1,8 @@
 Feature: My first feature
-  Scenario: valid login
-    Given the user should login first
-    When enter the creds
-    And click on submit
-    Then he should login
-    When the "POST" call is made
+  Scenario: Update User city that has active loan
+    Given base URL is set to "https://reqres.in"
+    Given endPoint is set to "/api/users/2"
+    When the "GET" call is made
+    Then the status of the response should be 200
+
+
