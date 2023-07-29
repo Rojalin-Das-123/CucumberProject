@@ -1,5 +1,5 @@
 Feature: My first feature
-  Scenario: Update User city that has active loan
+  Scenario: Get User Details
     Given base URL is set to "https://reqres.in"
     Given endPoint is set to "/api/users/2"
     When the "GET" call is made

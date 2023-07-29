@@ -19,7 +19,6 @@ public class BaseSteps extends BaseTest {
     protected static final String DELETE = "DELETE";
 
     public BaseSteps() {
-
     }
 
     @When("the {string} call is made")
