@@ -52,4 +52,25 @@ public class Action {
 
         return this.response;
     }
+
+    public Response putSendRequest(HTTPMethod put, Component component, boolean skipSSLCertificationValidation) {
+        RestAssured.baseURI = component.getBaseURL();
+        if (skipSSLCertificationValidation) {
+            RestAssured.useRelaxedHTTPSValidation();
+        }
+
+        this.request = RestAssured.given();
+        this.basicAuthentication(component);
+        if (component.getHeaders() != null) {
+            this.request.headers(component.getHeaders());
+        }
+
+//        LOGGER.info("=========================================================================================================================");
+//        LOGGER.info("GET Request:");
+//        LOGGER.info("=========================================================================================================================");
+        this.response = this.request.get(component.getEndpoint(), new Object[0]);
+        System.out.println("response"+this.response);
+
+        return this.response;
+    }
 }

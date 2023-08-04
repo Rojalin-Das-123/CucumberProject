@@ -14,6 +14,9 @@ public class APIHelper  {
             case GET:
                 abstractAPIAction = new Action().getSendRequest(HTTPMethod.GET,component, false);
                 break;
+            case PUT:
+                abstractAPIAction = new Action().putSendRequest(HTTPMethod.PUT,component, false);
+                break;
 
         }
 
