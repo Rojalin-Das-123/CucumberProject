@@ -64,13 +64,35 @@ public class Action {
         if (component.getHeaders() != null) {
             this.request.headers(component.getHeaders());
         }
+        this.request.body(component.getRequestBody().toString());
 
 //        LOGGER.info("=========================================================================================================================");
 //        LOGGER.info("GET Request:");
 //        LOGGER.info("=========================================================================================================================");
-        this.response = this.request.get(component.getEndpoint(), new Object[0]);
+        this.response = this.request.put(component.getEndpoint(), new Object[0]);
         System.out.println("response"+this.response);
 
+        return this.response;
+    }
+
+    public Response postSendRequest(HTTPMethod post, Component component, boolean skipSSLCertificationValidation) {
+        RestAssured.baseURI = component.getBaseURL();
+        if (skipSSLCertificationValidation) {
+            RestAssured.useRelaxedHTTPSValidation();
+        }
+
+        this.request = RestAssured.given();
+        this.basicAuthentication(component);
+        if (component.getHeaders() != null) {
+            this.request.headers(component.getHeaders());
+        }
+        this.request.body(component.getRequestBody().toString());
+
+//        LOGGER.info("=========================================================================================================================");
+//        LOGGER.info("GET Request:");
+//        LOGGER.info("=========================================================================================================================");
+        this.response = this.request.post(component.getEndpoint(), new Object[0]);
+        System.out.println("response"+this.response);
         return this.response;
     }
 }
