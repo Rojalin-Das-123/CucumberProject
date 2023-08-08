@@ -1,6 +1,8 @@
 package Steps;
 
 import api.BaseTest;
+import com.google.gson.JsonObject;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -44,5 +46,23 @@ public class MySteps extends BaseTest {
     @Given("endPoint is set to {string}")
     public void endpointIsSetTo(String endPoint) {
         apiComponent.setEndPoint(endPoint);
+    }
+
+    @And("request body is set for user creation")
+    public void requestBodyIsSetForUserCreation() {
+        JsonObject object = new JsonObject();
+        object.addProperty("name","Rojalin");
+        object.addProperty("job","SDET");
+        apiComponent.setRequestBody(object.toString());
+    }
+
+    @And("request body is set to update user details")
+    public void requestBodyIsSetToUpdateUserDetails() {
+
+        JsonObject object = new JsonObject();
+        object.addProperty("name","Rojalin");
+        object.addProperty("job","SDET-2");
+        apiComponent.setRequestBody(object.toString());
+
     }
 }
