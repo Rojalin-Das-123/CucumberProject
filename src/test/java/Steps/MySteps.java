@@ -65,4 +65,13 @@ public class MySteps extends BaseTest {
         apiComponent.setRequestBody(object.toString());
 
     }
+
+    @And("request body is set for user creation {string} and {string}")
+    public void requestBodyIsSetForUserCreationAnd(String user, String job) {
+        JsonObject object = new JsonObject();
+        object.addProperty("name",user);
+        object.addProperty("job",job);
+        apiComponent.setRequestBody(object.toString());
+
+    }
 }

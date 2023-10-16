@@ -7,11 +7,24 @@ Feature: My first feature
 
 
   Scenario: Create user
-    Given base URL is set to "https://reqres.in"
+    Given base URL is set to "https://reqres.i"
     Given endPoint is set to "/api/users"
     And request body is set for user creation
     When the "POST" call is made
     Then the status of the response should be 201
+
+
+  Scenario Outline: Create user1
+    Given base URL is set to "https://reqres.in"
+    Given endPoint is set to "/api/users"
+    And request body is set for user creation "<name>" and "<job>"
+    When the "POST" call is made
+    Then the status of the response should be 201
+    Examples:
+      | name | job |
+    |Rojalin|sdet|
+      |Rojalin|sdet1|
+
 
 
   Scenario: Update user details
